@@ -1,15 +1,14 @@
+import { useState } from "react";
+import Alert from "./components/Alert";
 import Button from "./components/Button";
 
 function App() {
-  // let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
-
-  // const handleSelectItem = (item: string) => {
-  //   console.log('your selected item is: ' + item);
-  // }
+  const [alertVisible, setAlertVisibility] = useState(false);
   return (
     <div>
-      <Button>
-        My Button
+      { alertVisible && <Alert onClose={() => setAlertVisibility(false)}>My alert</Alert>}
+      <Button color="primary" onClick={() => setAlertVisibility(true)}>
+        My Button      
       </Button>
     </div>
   )

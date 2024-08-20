@@ -1,26 +1,12 @@
-import { useState } from "react";
-import Alert from "./Alert";
-
 interface Props {
     children: string;
     color?: 'primary' | 'secondary' | 'danger';
-    onClick?: () => void;
+    onClick: () => void;
 }
 
-const Button = ({ children, color = 'danger', onClick }: Props) => {
-    const [clicked, setClicked] = useState(false);
-
-    const handleClick = () => {
-        setClicked(true);
-        if (onClick) {
-            onClick();
-        }
-    }
+const Button = ({ children, color = 'primary', onClick }: Props) => {
   return (
-    <>
-    {clicked && <Alert>Button Clicked</Alert>}
-    <button className={'btn btn-' + color} onClick={handleClick}>{children}</button>
-    </>
+    <button className={'btn btn-' + color} onClick={onClick}>{children}</button>
   )
 }
 
